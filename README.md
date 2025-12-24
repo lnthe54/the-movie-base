@@ -296,12 +296,7 @@ func loadMovies() {
 
 1. **APIClient**: Sử dụng async/await thay vì RxSwift
 2. **Error Handling**: Sử dụng `APIError` enum để xử lý lỗi, bao gồm timeout errors
-3. **Timeout Handling**: 
-   - Timeout được xử lý tự động bởi URLSessionConfiguration
-   - Timeout errors được map thành `APIError.timeout`, `APIError.requestTimeout`, hoặc `APIError.responseTimeout`
-   - Có thể cấu hình timeout cho từng request hoặc cho toàn bộ APIClient
-4. **Retry Mechanism**: Sử dụng `requestWithRetry` cho các request quan trọng cần retry khi timeout
-5. **Dependency Injection**: Dependencies được inject qua constructor
-6. **Thread Safety**: Sử dụng `@MainActor` khi cần update UI
-7. **Testing**: Có thể dễ dàng mock Repository và UseCase để test
+3. **Dependency Injection**: Dependencies được inject qua constructor
+4. **Thread Safety**: Sử dụng `@MainActor` khi cần update UI
+5. **Testing**: Có thể dễ dàng mock Repository và UseCase để test
 
