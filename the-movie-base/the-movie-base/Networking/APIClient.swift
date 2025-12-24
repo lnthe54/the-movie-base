@@ -121,46 +121,6 @@ final class APIClient {
         }
     }
     
-    /// Thực hiện request với retry mechanism khi timeout
-    /// - Parameters:
-    ///   - urlConvertible: URLRequestConvertible
-    ///   - maxRetries: Số lần retry tối đa (default: 2)
-    ///   - timeout: Timeout cho mỗi request (optional)
-    /// - Returns: Decoded object theo generic type T
-    func requestWithRetry<T: Codable>(
-        _ urlConvertible: URLRequestConvertible,
-        maxRetries: Int = 2,
-        timeout: TimeInterval? = nil
-    ) async throws -> T {
-        var lastError: Error?
-        
-        for attempt in 0...maxRetries {
-            do {
-                return try await request(urlConvertible, timeout: timeout)
-            } catch let error as APIError {
-                // Chỉ retry nếu là timeout error
-                if case .timeout = error, attempt < maxRetries {
-                    lastError = error
-                    // Exponential backoff: đợi 1s, 2s, 4s...
-                    let delay = pow(2.0, Double(attempt))
-                    try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-                    continue
-                } else if case .requestTimeout = error, attempt < maxRetries {
-                    lastError = error
-                    let delay = pow(2.0, Double(attempt))
-                    try? await Task.sleep(nanoseconds: UInt64(delay * 1_000_000_000))
-                    continue
-                } else {
-                    throw error
-                }
-            } catch {
-                throw error
-            }
-        }
-        
-        throw lastError ?? APIError.timeout
-    }
-    
     // MARK: - Private Methods
     
     /// Tạo Session với custom timeout

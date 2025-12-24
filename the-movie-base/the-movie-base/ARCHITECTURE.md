@@ -244,24 +244,6 @@ do {
 }
 ```
 
-### Retry Mechanism khi Timeout
-
-APIClient cung cấp method `requestWithRetry` để tự động retry khi gặp timeout:
-
-```swift
-// Retry tối đa 2 lần với exponential backoff
-let response = try await apiClient.requestWithRetry(
-    MovieRouter.getPopularMovies(page: 1),
-    maxRetries: 2,
-    timeout: 30
-)
-```
-
-**Exponential Backoff**: 
-- Lần retry 1: đợi 1 giây
-- Lần retry 2: đợi 2 giây
-- Lần retry 3: đợi 4 giây
-
 ### Ví dụ sử dụng trong Repository
 
 ```swift
@@ -277,11 +259,9 @@ final class MovieRepository: MovieRepositoryProtocol {
     }
     
     func getMovieDetail(id: Int) async throws -> MovieEntity {
-        // Sử dụng retry mechanism cho request quan trọng
-        return try await apiClient.requestWithRetry(
-            MovieRouter.getMovieDetail(id: id),
-            maxRetries: 3,
-            timeout: 30
+        // Sử dụng timeout mặc định
+        return try await apiClient.request(
+            MovieRouter.getMovieDetail(id: id)
         )
     }
 }
