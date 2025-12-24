@@ -12,6 +12,9 @@
 		25F05A382EFB9971001E8CE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F05A2A2EFB9971001E8CE6 /* AppDelegate.swift */; };
 		25F05A3A2EFB9971001E8CE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F05A322EFB9971001E8CE6 /* ViewController.swift */; };
 		25F05A3D2EFB9A7C001E8CE6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 25F05A3C2EFB9A7C001E8CE6 /* Alamofire */; };
+		25F05A402EFB9B6F001E8CE6 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F05A3F2EFB9B6D001E8CE6 /* APIClient.swift */; };
+		25F05A432EFB9BBB001E8CE6 /* CryptoSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 25F05A422EFB9BBB001E8CE6 /* CryptoSwift */; };
+		25F05A452EFB9BE2001E8CE6 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F05A442EFB9BDE001E8CE6 /* NetworkLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,8 @@
 		25F05A2C2EFB9971001E8CE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25F05A2D2EFB9971001E8CE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25F05A322EFB9971001E8CE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25F05A3F2EFB9B6D001E8CE6 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		25F05A442EFB9BDE001E8CE6 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25F05A3D2EFB9A7C001E8CE6 /* Alamofire in Frameworks */,
+				25F05A432EFB9BBB001E8CE6 /* CryptoSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +73,8 @@
 		25F05A3E2EFB9A88001E8CE6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				25F05A442EFB9BDE001E8CE6 /* NetworkLogger.swift */,
+				25F05A3F2EFB9B6D001E8CE6 /* APIClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -89,6 +97,7 @@
 			name = "the-movie-base";
 			packageProductDependencies = (
 				25F05A3C2EFB9A7C001E8CE6 /* Alamofire */,
+				25F05A422EFB9BBB001E8CE6 /* CryptoSwift */,
 			);
 			productName = "the-movie-base";
 			productReference = 25F05A122EFB9966001E8CE6 /* the-movie-base.app */;
@@ -120,6 +129,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				25F05A3B2EFB9A7C001E8CE6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				25F05A412EFB9BBB001E8CE6 /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 25F05A132EFB9966001E8CE6 /* Products */;
@@ -148,8 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F05A452EFB9BE2001E8CE6 /* NetworkLogger.swift in Sources */,
 				25F05A382EFB9971001E8CE6 /* AppDelegate.swift in Sources */,
 				25F05A3A2EFB9971001E8CE6 /* ViewController.swift in Sources */,
+				25F05A402EFB9B6F001E8CE6 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +396,14 @@
 				minimumVersion = 5.11.0;
 			};
 		};
+		25F05A412EFB9BBB001E8CE6 /* XCRemoteSwiftPackageReference "CryptoSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/CryptoSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -391,6 +411,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 25F05A3B2EFB9A7C001E8CE6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		25F05A422EFB9BBB001E8CE6 /* CryptoSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25F05A412EFB9BBB001E8CE6 /* XCRemoteSwiftPackageReference "CryptoSwift" */;
+			productName = CryptoSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
