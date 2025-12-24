@@ -15,14 +15,14 @@ protocol MovieViewProtocol: ViewProtocol {
 }
 
 /// Presenter cho Movie List Screen
-final class MovieListPresenter: BasePresenter<MovieViewProtocol> {
+final class MovieListPresenter: BasePresenter<MovieListViewController> {
     private let getPopularMoviesUseCase: GetPopularMoviesUseCase
     private var currentPage: Int = 1
     private var totalPages: Int = 1
     private var movies: [MovieEntity] = []
     
     init(
-        view: MovieViewProtocol,
+        view: MovieListViewController,
         getPopularMoviesUseCase: GetPopularMoviesUseCase
     ) {
         self.getPopularMoviesUseCase = getPopularMoviesUseCase
@@ -76,12 +76,12 @@ final class MovieListPresenter: BasePresenter<MovieViewProtocol> {
 }
 
 /// Presenter cho Movie Detail Screen
-final class MovieDetailPresenter: BasePresenter<MovieViewProtocol> {
+final class MovieDetailPresenter: BasePresenter<MovieDetailViewController> {
     private let getMovieDetailUseCase: GetMovieDetailUseCase
     private let movieId: Int
     
     init(
-        view: MovieViewProtocol,
+        view: MovieDetailViewController,
         getMovieDetailUseCase: GetMovieDetailUseCase,
         movieId: Int
     ) {

@@ -7,6 +7,7 @@
 
 import Alamofire
 import CryptoSwift
+import Foundation
 
 final class APIClient {
     
@@ -103,7 +104,7 @@ final class APIClient {
                                 return
                             }
                             
-                            let decryptedData = try aes.decrypt(dataEncoded.bytes)
+                            let decryptedData = try aes.decrypt(dataEncoded.byteArray)
                             let dataDecoded = Data(decryptedData)
                             let stringDecoded = String(data: dataDecoded, encoding: .utf8) ?? ""
                             
